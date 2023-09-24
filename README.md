@@ -1,1 +1,1 @@
-# python-project-template
+# {{cookiecutter.project_slug}}
