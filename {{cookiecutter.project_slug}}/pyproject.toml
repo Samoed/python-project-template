@@ -30,13 +30,7 @@ exclude = [
 ]
 
 [[tool.mypy.overrides]]
-module = [
-    "sqlalchemy_utils",
-    "nltk",
-    "pandas",
-    "schedule",
-    "uvicorn",
-]
+module = []
 ignore_missing_imports = true
 
 [tool.black]
