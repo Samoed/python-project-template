@@ -1,11 +1,10 @@
 # https://github.com/samuelcolvin/pydantic/blob/master/Makefile
 .DEFAULT_GOAL := all
-dirs = src/
 poetry = poetry run
-isort = isort
-black = black
-mypy = mypy
-flake8  = flake8
+isort = isort src/
+black = black src/
+mypy = mypy src/
+flake8  = flake8 src/
 pyupgrade = pyupgrade --py311-plus
 
 
@@ -27,15 +26,15 @@ lint: lint
 .PHONY: format
 format:
 	$(poetry) $(pyupgrade)
-	$(poetry) $(isort) $(dirs)
-	$(poetry) $(black) $(dirs)
-	$(poetry) $(mypy) $(dirs)
-	$(poetry) $(flake8) $(dirs)
+	$(poetry) $(isort)
+	$(poetry) $(black)
+	$(poetry) $(mypy)
+	$(poetry) $(flake8)
 
 .PHONY: export-dependencies
 export-dependencies:
-	poetry export -f requirements.txt --output requirements/requirements.txt
-	poetry export -f requirements.txt --output requirements/requirements-dev.txt --with=dev
+	poetry export -f requirements.txt --output requirements.txt
+	poetry export -f requirements.txt --output requirements-dev.txt --with=dev
 
 .PHONY: database
 database:
