@@ -1,6 +1,5 @@
-# https://github.com/samuelcolvin/pydantic/blob/master/Makefile
 .DEFAULT_GOAL := all
-dirs = src/
+DIRS = src/
 poetry = poetry run
 isort = isort
 black = black
@@ -11,26 +10,12 @@ pyupgrade = pyupgrade --py311-plus
 
 .PHONY: install-linting
 install-linting:
-	poetry add flake8 black isort mypy pyupgrade -G dev
-
-.PHONY: install
-install: install-linting
-	pre-commit install
-	@echo 'installed development requirements'
-
-.PHONY: lint
-lint: lint
-	$(isort) --df --check-only
-	$(black) --diff --check
-	$(flake8)
+	poetry add ruff -G dev
 
 .PHONY: format
 format:
-	$(poetry) $(pyupgrade)
-	$(poetry) $(isort) $(dirs)
-	$(poetry) $(black) $(dirs)
-	$(poetry) $(mypy) $(dirs)
-	$(poetry) $(flake8) $(dirs)
+	pre-commit run --all-files
+	mypy $(DIRS)
 
 .PHONY: export-dependencies
 export-dependencies:
