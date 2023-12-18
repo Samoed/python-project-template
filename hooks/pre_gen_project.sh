@@ -1,6 +1,7 @@
 #!/bin/sh
 git init
+git branch -M main
 pre-commit install
-poetry init
-poetry install
-poetry add mypy ruff -G dev
+pdm init
+pdm install
+pdm add mypy ruff -G dev

@@ -24,7 +24,7 @@ export-dependencies:
 
 .PHONY: database
 database:
-	docker run --name postgresql -e POSTGRES_USER=myusername -e POSTGRES_PASSWORD=mypassword -p 5432:5432 -d postgres
+	docker compose up database -d
 
 .PHONY: test
 test:
