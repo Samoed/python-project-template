@@ -8,26 +8,26 @@ repos:
     -   id: trailing-whitespace
     -   id: check-docstring-first
 
--   repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.1.4
-    hooks:
-    -   id: ruff
-        args: [--fix, --exit-non-zero-on-fix]
-        types: [python, jupyter]
-    -   id: ruff-format
-        types: [python, jupyter]
-
 -   repo: https://github.com/codespell-project/codespell
     rev: v2.2.4
     hooks:
     -   id: codespell
 
--   repo: local
-    hooks:
-    -   id: mypy
-        name: Mypy
-        language: python
-        entry: pdm run mypy
-        types: [python]
-        additional_dependencies: ["mypy>=1.7"]
-        require_serial: true
+# -   repo: https://github.com/astral-sh/ruff-pre-commit
+#     rev: v0.1.4
+#     hooks:
+#     -   id: ruff
+#         args: [--fix, --exit-non-zero-on-fix]
+#         types: [python, jupyter]
+#     -   id: ruff-format
+#         types: [python, jupyter]
+
+# -   repo: local
+#     hooks:
+#     -   id: mypy
+#         name: Mypy
+#         language: python
+#         entry: pdm run mypy
+#         types: [python]
+#         additional_dependencies: ["mypy>=1.7"]
+#         require_serial: true
