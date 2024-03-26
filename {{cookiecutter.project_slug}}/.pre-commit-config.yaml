@@ -13,14 +13,23 @@ repos:
     hooks:
     -   id: codespell
 
-# -   repo: https://github.com/astral-sh/ruff-pre-commit
-#     rev: v0.1.4
-#     hooks:
-#     -   id: ruff
-#         args: [--fix, --exit-non-zero-on-fix]
-#         types: [python, jupyter]
-#     -   id: ruff-format
-#         types: [python, jupyter]
+- repo: https://github.com/astral-sh/ruff-pre-commit
+  rev: v0.3.3
+  hooks:
+    - id: ruff
+      types_or: [ python, pyi, jupyter ]
+      args: [ --config, pyproject.toml, --fix, --output-format=github]
+
+    - id: ruff
+      types_or: [ python, pyi, jupyter ]
+      args: [ --config, pyproject.toml, --fix ]
+    # Run the formatter.
+    - id: ruff-format
+      types_or: [ python, pyi, jupyter ]
+      args: [ --config, pyproject.toml ]
+
+default_language_version:
+    python: python3.10
 
 # -   repo: local
 #     hooks:
